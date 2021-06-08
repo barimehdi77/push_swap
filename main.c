@@ -2,6 +2,14 @@
 #include <unistd.h>
 #include "libft/libft.h"
 
+typedef struct 	s_stacks
+{
+	int	*stack_a;
+	int	*stack_b;
+	int	arr_size;
+}				t_stacks;
+
+
 int	ft_isnumber(char *number)
 {
 	int	i;
@@ -16,26 +24,61 @@ int	ft_isnumber(char *number)
 	return (1);
 }
 
-int	ft_store_numbers(char **av)
+int	ft_put_err(t_stacks *stacks, char *message, int ret)
 {
-	int *numbers;
-	int i;
+	free(stacks->stack_a);
+	free(stacks->stack_b);
+	ft_putendl_fd(message, 2);
+	return (ret);
+}
+
+int ft_isduplicate(t_stacks *stacks, int number)
+{
+	int size;
+
+	size = stacks->arr_size;
+	while (size >= 0)
+	{
+		if (stacks->stack_a[size] == number)
+			return (0);
+		size--;
+	}
+	return (1);
+}
+
+t_stacks	ft_store_numbers(int size, char **av)
+{
+	t_stacks	stacks;
+	int			number;
+	int			i;
 
 	i = 0;
-	while (av[i])
+	stacks.stack_a = (int *)malloc(sizeof(int) * size);
+	stacks.stack_b = (int *)malloc(sizeof(int) * size);
+	stacks.arr_size = size;
+	while (*av)
 	{
-		if (!ft_isnumber(av[i]))
-			exit(0);
+		if (!ft_isnumber(*av))
+			exit(ft_put_err(&stacks, ft_strjoin(ft_strjoin("Error: ", *av), " Not a number"), 0));
+		number = ft_atoi(*av);
+		if (!ft_isduplicate(&stacks, number))
+			exit(ft_put_err(&stacks, ft_strjoin(ft_strjoin("Error: ", *av), " is duplicated"), 0));
+		stacks.stack_a[i++] = ft_atoi(*av++);
 	}
-	return (numbers);
+	return (stacks);
 }
 
 int main(int ac, char **av)
 {
-	int *arr;
-	int i;
+	t_stacks	stacks;
+	int			*arr;
+	int			i;
 	// create function gets the numbers in the arguments and stroe them in arr
-	i = 1;
-	while (av[i])
-		printf("|%s|\n", av[i++]);
+	stacks = ft_store_numbers(ac - 1, av + 1);
+	i = 0;
+	while (i < stacks.arr_size)
+		printf("%d|%d|\n",ac, stacks.stack_a[i++]);
+	free(stacks.stack_a);
+	free(stacks.stack_b);
+	return (0);
 }
