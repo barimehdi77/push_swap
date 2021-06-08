@@ -6,7 +6,7 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:55:13 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/08 20:55:23 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/08 21:18:41 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int	ft_put_err(t_stacks *stacks, char *message, int ret)
 {
 	free(stacks->stack_a);
 	free(stacks->stack_b);
-	ft_putendl_fd(message, 2);
+	if (message != NULL)
+		ft_putendl_fd(message, 2);
 	return (ret);
 }
 
@@ -86,5 +87,5 @@ int main(int ac, char **av)
 		printf("%d|%d|\n",ac, stacks.stack_a[i++]);
 	free(stacks.stack_a);
 	free(stacks.stack_b);
-	return (0);
+	return (ft_put_err(&stacks, NULL, 0));
 }
