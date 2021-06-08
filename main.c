@@ -1,13 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/08 20:55:13 by mbari             #+#    #+#             */
+/*   Updated: 2021/06/08 20:55:23 by mbari            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #include <stdio.h>
 #include <unistd.h>
-#include "libft/libft.h"
-
-typedef struct 	s_stacks
-{
-	int	*stack_a;
-	int	*stack_b;
-	int	arr_size;
-}				t_stacks;
+#include "push_swap.h"
 
 
 int	ft_isnumber(char *number)
