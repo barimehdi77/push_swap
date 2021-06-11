@@ -6,7 +6,7 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:55:13 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/09 21:13:22 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/11 16:18:42 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,22 +120,24 @@ int main(int ac, char **av)
 	int			i;
 	// create function gets the numbers in the arguments and stroe them in arr
 	stacks = ft_store_numbers(ac - 1, av + 1);
-	ft_print(&stacks);
+	ft_print_stack_a(&stacks);
 	//ft_swap_a(&stacks, YES);
-	ft_push_b(&stacks);
-	ft_push_b(&stacks);
-	ft_push_b(&stacks);
-	ft_push_b(&stacks);
-	ft_push_b(&stacks);
+	// ft_push_b(&stacks);
+	// ft_push_b(&stacks);
+	// ft_push_b(&stacks);
+	// ft_push_b(&stacks);
+	// ft_push_b(&stacks);
 	// printf("after swaping\n");
 	// ft_print(&stacks);
 	// ft_push_a(&stacks, YES);
 	// ft_push_a(&stacks, YES);
 	// ft_push_a(&stacks, YES);
 	// ft_print(&stacks);
-	ft_print_stack_b(&stacks);
-	ft_rotate_b(&stacks.stack_b, YES);
-	ft_print_stack_b(&stacks);
+	// ft_print_stack_b(&stacks);
+	ft_print_stack_a(&stacks);
+	ft_reverse_rotate_a(&stacks.stack_a, YES);
+	ft_print_stack_a(&stacks);
+	// ft_print_stack_b(&stacks);
 	
 	return (ft_put_err(&stacks, NULL, 0));
 }

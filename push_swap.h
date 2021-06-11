@@ -6,7 +6,7 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:54:59 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/09 21:12:53 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/11 16:20:44 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,3 +38,7 @@ void	ft_push_a(t_stacks *stacks);
 void	ft_push_b(t_stacks *stacks);
 void	ft_rotate_a(t_vector *stack_a, int print);
 void	ft_rotate_b(t_vector *stack_b, int print);
+void	ft_rotate_both(t_stacks *stacks);
+void	ft_reverse_rotate_a(t_vector *stack_a, int print);
+void	ft_reverse_rotate_b(t_vector *stack_b, int print);
+void	ft_reverse_rotate_both(t_stacks *stacks);
