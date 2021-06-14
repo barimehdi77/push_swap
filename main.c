@@ -6,7 +6,7 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:55:13 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/14 17:40:40 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/14 18:36:41 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ t_stacks	ft_store_numbers(int size, char **av)
 		if (!ft_isnumber(*av))
 			exit(ft_put_err(&stacks, ft_strjoin(ft_strjoin("Error: ", *av), " Not a number"), 0));
 		number = ft_atoi(*av);
-		if (!ft_isduplicate(&stacks, number))
-			exit(ft_put_err(&stacks, ft_strjoin(ft_strjoin("Error: ", *av), " is duplicated"), 0));
+		// if (!ft_isduplicate(&stacks, number))
+		// 	exit(ft_put_err(&stacks, ft_strjoin(ft_strjoin("Error: ", *av), " is duplicated"), 0));
 		stacks.stack_a.vector[i++] = ft_atoi(*av++);
 		stacks.stack_a.used_size++;
 	}
@@ -122,7 +122,7 @@ int main(int ac, char **av)
 	int			i;
 	// create function gets the numbers in the arguments and stroe them in arr
 	stacks = ft_store_numbers(ac - 1, av + 1);
-	ft_print(&stacks);
+	// ft_print(&stacks);
 	//ft_swap_a(&stacks, YES);
 	// ft_push_b(&stacks);
 	// ft_push_b(&stacks);
@@ -140,7 +140,7 @@ int main(int ac, char **av)
 		ft_sort_three_numbers(&stacks.stack_a);
 	if (ac == 6)
 		ft_sort_five_numbers(&stacks);
-	ft_print(&stacks);
+	// ft_print(&stacks);
 	// ft_print_stack_b(&stacks);
 	
 	return (ft_put_err(&stacks, NULL, 0));
