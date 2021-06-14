@@ -6,7 +6,7 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:55:13 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/11 16:18:42 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/14 17:40:40 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	ft_isnumber(char *number)
 	int	i;
 
 	i = 0;
+	if (number[i] == '-')
+		i++;
 	while (number[i])
 	{
 		if (!ft_isdigit(number[i]))
@@ -87,7 +89,7 @@ void	ft_print_stack_a(t_stacks *stacks)
 	printf("/*****************************stack_a****************************/\n");
 	while (i < stacks->stack_a.used_size)
 	{
-		printf("|size of stack_a= %d|used size = %d|value = %d|\n",stacks->stack_a.size, stacks->stack_a.used_size,  stacks->stack_a.vector[i]);
+		printf("|size of stack_a= %d|used size = %d|value = %d|\n",stacks->stack_a.size, stacks->stack_a.used_size, stacks->stack_a.vector[i]);
 		i++;
 	}
 }
@@ -120,7 +122,7 @@ int main(int ac, char **av)
 	int			i;
 	// create function gets the numbers in the arguments and stroe them in arr
 	stacks = ft_store_numbers(ac - 1, av + 1);
-	ft_print_stack_a(&stacks);
+	ft_print(&stacks);
 	//ft_swap_a(&stacks, YES);
 	// ft_push_b(&stacks);
 	// ft_push_b(&stacks);
@@ -133,10 +135,12 @@ int main(int ac, char **av)
 	// ft_push_a(&stacks, YES);
 	// ft_push_a(&stacks, YES);
 	// ft_print(&stacks);
-	// ft_print_stack_b(&stacks);
-	ft_print_stack_a(&stacks);
-	ft_reverse_rotate_a(&stacks.stack_a, YES);
-	ft_print_stack_a(&stacks);
+	// ft_print_stack_b(&stacks);	ft_reverse_rotate_a(&stacks.stack_a, YES);
+	if (ac == 4)
+		ft_sort_three_numbers(&stacks.stack_a);
+	if (ac == 6)
+		ft_sort_five_numbers(&stacks);
+	ft_print(&stacks);
 	// ft_print_stack_b(&stacks);
 	
 	return (ft_put_err(&stacks, NULL, 0));
