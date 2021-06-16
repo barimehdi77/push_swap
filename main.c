@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:55:13 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/15 15:19:01 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/16 16:39:31 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,15 +146,18 @@ int main(int ac, char **av)
 	if (ft_issorted(&stacks.stack_a))
 		return (ft_put_err(&stacks, NULL, 0));
 	// ft_print(&stacks);
+	ft_print_stack_a(&stacks);
 	if (ac == 3)
 		ft_sort_three_numbers(&stacks.stack_a);
 	if (ac == 5 || ac == 4)
 		ft_sort_five_numbers(&stacks);
-	// if (ac > 5 && ac <= 10)
-	ft_sort_ten_numbers(&stacks);
+	if (ac > 5 && ac <= 10)
+		ft_sort_ten_numbers(&stacks);
+	if (ac > 10 && ac <= 100)
+		ft_one_handred(&stacks);
 	
 	ft_putstr_fd(GREEN, 1);
-	ft_print_stack_a(&stacks);
+	ft_print(&stacks);
 	ft_putstr_fd(RESET, 1);
 	return (ft_put_err(&stacks, NULL, 0));
 }

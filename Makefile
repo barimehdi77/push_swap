@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mbari <mbari@student.42.fr>                +#+  +:+       +#+         #
+#    By: kali <kali@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/11 15:34:01 by mbari             #+#    #+#              #
-#    Updated: 2021/06/15 13:08:08 by mbari            ###   ########.fr        #
+#    Updated: 2021/06/16 14:23:33 by kali             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= minishell
 
-SRC_EXECUTE= main.c ft_inctructions.c ft_three_numbers.c ft_five_numbers.c ft_ten_numbers.c
+SRC_EXECUTE= main.c ft_inctructions.c ft_three_numbers.c ft_five_numbers.c ft_ten_numbers.c ft_one_handred.c
 
 LIBFT= libft/libft.a
 
