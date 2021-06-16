@@ -6,7 +6,7 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:55:13 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/14 18:36:41 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/15 15:19:01 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,25 +86,29 @@ void	ft_print_stack_a(t_stacks *stacks)
 	int i;
 
 	i = 0;
+	ft_putstr_fd(CYAN, 1);
 	printf("/*****************************stack_a****************************/\n");
 	while (i < stacks->stack_a.used_size)
 	{
 		printf("|size of stack_a= %d|used size = %d|value = %d|\n",stacks->stack_a.size, stacks->stack_a.used_size, stacks->stack_a.vector[i]);
 		i++;
 	}
+	ft_putstr_fd(RESET, 1);
 }
 
 void	ft_print_stack_b(t_stacks *stacks)
 {
 	int i;
-
-	printf("/*****************************stack_b****************************/\n");
+	
 	i = 0;
+	ft_putstr_fd(RED, 1);
+	printf("/*****************************stack_b****************************/\n");
 	while (i < stacks->stack_b.used_size)
 	{
 		printf("|size of stack_b = %d|used size = %d|value = %d|\n",stacks->stack_b.size, stacks->stack_b.used_size, stacks->stack_b.vector[i]);
 		i++;
 	}
+	ft_putstr_fd(RESET, 1);
 }
 
 void	ft_print(t_stacks *stacks)
@@ -115,33 +119,42 @@ void	ft_print(t_stacks *stacks)
 	ft_print_stack_b(stacks);
 }
 
+int	ft_issorted(t_vector *vector)
+{
+	int i;
+	int *tmp;
+
+	i = 0;
+	tmp = vector->vector;
+	while (i < vector->used_size)
+	{
+		if (tmp[i] > tmp[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int main(int ac, char **av)
 {
 	t_stacks	stacks;
 	int			*arr;
 	int			i;
+	ac--;
 	// create function gets the numbers in the arguments and stroe them in arr
-	stacks = ft_store_numbers(ac - 1, av + 1);
+	stacks = ft_store_numbers(ac, av + 1);
+	if (ft_issorted(&stacks.stack_a))
+		return (ft_put_err(&stacks, NULL, 0));
 	// ft_print(&stacks);
-	//ft_swap_a(&stacks, YES);
-	// ft_push_b(&stacks);
-	// ft_push_b(&stacks);
-	// ft_push_b(&stacks);
-	// ft_push_b(&stacks);
-	// ft_push_b(&stacks);
-	// printf("after swaping\n");
-	// ft_print(&stacks);
-	// ft_push_a(&stacks, YES);
-	// ft_push_a(&stacks, YES);
-	// ft_push_a(&stacks, YES);
-	// ft_print(&stacks);
-	// ft_print_stack_b(&stacks);	ft_reverse_rotate_a(&stacks.stack_a, YES);
-	if (ac == 4)
+	if (ac == 3)
 		ft_sort_three_numbers(&stacks.stack_a);
-	if (ac == 6)
+	if (ac == 5 || ac == 4)
 		ft_sort_five_numbers(&stacks);
-	// ft_print(&stacks);
-	// ft_print_stack_b(&stacks);
+	// if (ac > 5 && ac <= 10)
+	ft_sort_ten_numbers(&stacks);
 	
+	ft_putstr_fd(GREEN, 1);
+	ft_print_stack_a(&stacks);
+	ft_putstr_fd(RESET, 1);
 	return (ft_put_err(&stacks, NULL, 0));
 }

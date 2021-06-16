@@ -6,12 +6,16 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:54:59 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/14 17:16:14 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/15 13:11:07 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 
+# define GREEN "\e[1;32m"
+# define RESET "\e[0m"
+# define RED "\e[1;91m"
+# define CYAN "\e[1;36m"
 #define	YES 1
 #define	NO 0
 
@@ -37,7 +41,7 @@ void	ft_print_stack_b(t_stacks *stacks);
 
 
 
-
+int		ft_issorted(t_vector *vector);
 void	ft_swap_a_or_b(t_vector *vector, int print, char stack);
 void	ft_swap_both(t_stacks *stacks);
 void	ft_push_a(t_stacks *stacks);
@@ -50,3 +54,5 @@ void	ft_reverse_rotate_b(t_vector *stack_b, int print);
 void	ft_reverse_rotate_both(t_stacks *stacks);
 void	ft_sort_three_numbers(t_vector *stack_a);
 void	ft_sort_five_numbers(t_stacks *stacks);
+int		ft_get_smallest_index(t_vector *stack_a);
+void	ft_sort_ten_numbers(t_stacks *stacks);
