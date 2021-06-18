@@ -6,7 +6,7 @@
 /*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 14:14:10 by kali              #+#    #+#             */
-/*   Updated: 2021/06/16 17:05:54 by kali             ###   ########.fr       */
+/*   Updated: 2021/06/17 15:00:13 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,11 +90,13 @@ void    ft_move_to_top(t_stacks *stacks, int index)
 		{
 			ft_reverse_rotate_a(&stacks->stack_a, YES);
 			index++;
+			if (index == stacks->stack_a.used_size)
+				break;
 		}
 	}
 }
 
-void    ft_push_index(t_stacks *stacks, int key_number)
+void    ft_push_index(t_stacks *stacks, int key_number, int i)
 {
     int index;
 
@@ -111,16 +113,17 @@ void	ft_sort_ten_numbers2(t_stacks *stacks, int size)
 {
 	if (!ft_issorted(&stacks->stack_a))
 	{
-		while (stacks->stack_a.used_size != 5)
+		while (stacks->stack_a.used_size >= 5)
 		{
+			ft_putnbr_fd(stacks->stack_a.used_size, 1);
 			ft_find_smallest_number2(stacks);
 			ft_push_b(stacks);
 		}
-		// ft_print(stacks);
 		ft_sort_five_numbers(stacks);
-		// ft_print(stacks);
 		while (stacks->stack_a.used_size != size)
+		{
 			ft_push_a(stacks);
+		}
 	}
 }
 
@@ -159,7 +162,6 @@ void	ft_one_handred(t_stacks *stacks)
 {
 	int i;
 	int key_number;
-	int key_index;
 	int *sorted_list;
 
 	i = 1;
@@ -167,15 +169,20 @@ void	ft_one_handred(t_stacks *stacks)
 	while (i != 4)
 	{
 		key_number = ft_find_key_number(sorted_list, stacks->stack_a.size, i);
-		ft_push_index(stacks, key_number);
+		ft_push_index(stacks, key_number, i);
 		i++;
 	}
-	ft_sort_ten_numbers2(stacks, stacks->stack_a.used_size);
+	if (stacks->stack_a.used_size == 2)
+		ft_swap_a_or_b(&stacks->stack_a, YES, 'a');
+	if (stacks->stack_a.used_size == 3)
+		ft_sort_three_numbers(&stacks->stack_a);
+	if (stacks->stack_a.used_size == 5 || stacks->stack_a.used_size == 4)
+		ft_sort_five_numbers(stacks);
+	if (stacks->stack_a.used_size > 5)
+		ft_sort_ten_numbers2(stacks, stacks->stack_a.used_size);
 	while (stacks->stack_b.used_size != 0)
 	{
-		// ft_print_stack_b(stacks);
 		ft_find_biggest_number(stacks);
-		// ft_print_stack_b(stacks);
 		ft_push_a(stacks);
 	}
 }

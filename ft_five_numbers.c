@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_five_numbers.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 17:07:09 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/15 13:17:37 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/17 13:51:32 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,13 @@ void	ft_sort_five_numbers(t_stacks *stacks)
 			ft_find_smallest_number(stacks);
 			ft_push_b(stacks);
 		}
-		ft_find_smallest_number(stacks);
-		ft_push_b(stacks);
+		if (stacks->stack_a.used_size == 4)
+		{
+			ft_find_smallest_number(stacks);
+			ft_push_b(stacks);
+		}
 		ft_sort_three_numbers(&stacks->stack_a);
 		ft_push_a(stacks);
 		ft_push_a(stacks);
-		// ft_print(stacks);
 	}
 }
