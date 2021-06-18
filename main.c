@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:55:13 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/17 14:59:14 by kali             ###   ########.fr       */
+/*   Updated: 2021/06/18 14:26:49 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,10 +129,7 @@ int	ft_issorted(t_vector *vector)
 	while (i < vector->used_size - 1)
 	{
 		if (tmp[i] > tmp[i + 1])
-		{
-			printf("NOT OKAY IN [%d] and [%d]\n", i, i+1);
 			return (0);
-		}
 		i++;
 	}
 	return (1);
@@ -158,24 +155,26 @@ int main(int ac, char **av)
 		ft_sort_five_numbers(&stacks);
 	if (ac > 5 && ac <= 10)
 		ft_sort_ten_numbers(&stacks);
-	if (ac > 10)
+	if (ac > 10 && ac <= 100)
 		ft_one_handred(&stacks);
+	if (ac > 100)
+		ft_five_handred(&stacks);
 	
 	// ft_putstr_fd(GREEN, 1);
-	ft_print(&stacks);
+	// ft_print(&stacks);
 	// ft_putstr_fd(RESET, 1);
 	
 	if (ft_issorted(&stacks.stack_a))
 	{
-		ft_putstr_fd(GREEN, 1);
+		// ft_putstr_fd(GREEN, 1);
 		ft_putstr_fd("OK\n", 1);
-		ft_putstr_fd(RESET, 1);
+		// ft_putstr_fd(RESET, 1);
 	}
 	else
 	{
-		ft_putstr_fd(RED, 1);
+		// ft_putstr_fd(RED, 1);
 		ft_putstr_fd("KO\n", 1);
-		ft_putstr_fd(RESET, 1);
+		// ft_putstr_fd(RESET, 1);
 	}
 	return (ft_put_err(&stacks, NULL, 0));
 }

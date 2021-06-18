@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:54:59 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/16 16:46:24 by kali             ###   ########.fr       */
+/*   Updated: 2021/06/18 14:11:43 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,3 +58,4 @@ int		ft_get_smallest_index(t_vector *stack_a);
 void	ft_find_smallest_number2(t_stacks *stacks);
 void	ft_sort_ten_numbers(t_stacks *stacks);
 void	ft_one_handred(t_stacks *stacks);
+void	ft_five_handred(t_stacks *stacks);

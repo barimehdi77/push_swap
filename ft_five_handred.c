@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_one_handred.c                                   :+:      :+:    :+:   */
+/*   ft_five_handred.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/16 14:14:10 by kali              #+#    #+#             */
-/*   Updated: 2021/06/18 14:26:41 by mbari            ###   ########.fr       */
+/*   Created: 2021/06/18 14:11:07 by mbari             #+#    #+#             */
+/*   Updated: 2021/06/18 14:13:11 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ int *ft_sort_array(t_vector *stack_a)
 }
 
 
-int ft_find_key_number(int *sorted_list, int size, int divided, int chunks)
+int ft_find_key_number(int *sorted_list, int size, int divided)
 {
 	int key_munber;
 	
-	key_munber = sorted_list[(size * divided) / chunks];
+	key_munber = sorted_list[(size * divided) / 4];
     return(key_munber);
 }
 
@@ -96,7 +96,7 @@ void    ft_move_to_top(t_stacks *stacks, int index)
 	}
 }
 
-void    ft_push_index(t_stacks *stacks, int key_number)
+void    ft_push_index(t_stacks *stacks, int key_number, int i)
 {
     int index;
 
@@ -158,7 +158,7 @@ void	ft_find_biggest_number(t_stacks *stacks)
 	}
 }
 
-void	ft_one_handred(t_stacks *stacks)
+void	ft_five_handred(t_stacks *stacks)
 {
 	int i;
 	int key_number;
@@ -166,10 +166,10 @@ void	ft_one_handred(t_stacks *stacks)
 
 	i = 1;
 	sorted_list = ft_sort_array(&stacks->stack_a);
-	while (i != 4)
+	while (i != 8)
 	{
-		key_number = ft_find_key_number(sorted_list, stacks->stack_a.size, i, 4);
-		ft_push_index(stacks, key_number);
+		key_number = ft_find_key_number(sorted_list, stacks->stack_a.size, i);
+		ft_push_index(stacks, key_number, i);
 		i++;
 	}
 	if (stacks->stack_a.used_size == 2)
@@ -181,43 +181,8 @@ void	ft_one_handred(t_stacks *stacks)
 		ft_sort_three_numbers(&stacks->stack_a);
 	if (stacks->stack_a.used_size == 5 || stacks->stack_a.used_size == 4)
 		ft_sort_five_numbers(stacks);
-	if (stacks->stack_a.used_size > 5)
+	if (stacks->stack_a.used_size > 5 && stacks->stack_a.used_size <= 100)
 		ft_sort_ten_numbers2(stacks, stacks->stack_a.used_size);
-	while (stacks->stack_b.used_size != 0)
-	{
-		ft_find_biggest_number(stacks);
-		ft_push_a(stacks);
-	}
-}
-
-void	ft_five_handred(t_stacks *stacks)
-{
-	int i;
-	int key_number;
-	int *sorted_list;
-
-	i = 1;
-	sorted_list = ft_sort_array(&stacks->stack_a);
-	while (i != 8)
-	{
-		key_number = ft_find_key_number(sorted_list, stacks->stack_a.size, i, 8);
-		ft_push_index(stacks, key_number);
-		i++;
-	}
-	// ft_print_stack_a(stacks);
-	if (stacks->stack_a.used_size == 2)
-	{
-		if (!ft_issorted(&stacks->stack_a))
-			ft_swap_a_or_b(&stacks->stack_a, YES, 'a');
-	}
-	else if (stacks->stack_a.used_size == 3)
-		ft_sort_three_numbers(&stacks->stack_a);
-	else if (stacks->stack_a.used_size == 5 || stacks->stack_a.used_size == 4)
-		ft_sort_five_numbers(stacks);
-	else if (stacks->stack_a.used_size > 5 && stacks->stack_a.used_size <= 10)
-		ft_sort_ten_numbers2(stacks, stacks->stack_a.used_size);
-	else if (stacks->stack_a.used_size > 10)
-		ft_one_handred(stacks);
 	while (stacks->stack_b.used_size != 0)
 	{
 		ft_find_biggest_number(stacks);

@@ -1,4 +1,8 @@
-#!/bin/bash
+#! /usr/bin/env bash
+RED="\e[31m";
+GREEN="\e[32m";
+ENDCOLOR="\e[0m";
+KO="KO";
 
 if [ -z $2 ]
 then
@@ -12,10 +16,17 @@ while [ 1 ]
 do 
 	rand=`ruby -e "puts (-1000..10000).to_a.shuffle.sample($1).join(' ')"`;
 	num=$(./a.out $rand | grep -E "^(sa|pa|ra|sb|pb|rb|rra|rrb)" | wc -l);
+	is_ok=$(./a.out $rand | grep -E "OK\b|KO\b");
+	if [[ $is_ok == *"KO"* ]]
+	then
+		echo "$(tput setaf 1)ERROR: The Numbers |$rand| are unstored $(tput sgr0)";
+		exit;
+	fi
+
 	if [ $num -ge $max_steps ]
 	then
-		echo "ERROR: |$rand| sorted in '$num' instead of '$max_steps'"
-		exit
+		echo "$(tput setaf 1)ERROR: |$rand| sorted in '$num' instead of '$max_steps' $(tput sgr0)";
+		exit;
 	fi
-	echo -e "$1 numbers sorted in : $num"
+	echo -e "$(tput setaf 2)$1 numbers sorted in : $num \r\t\t\t\t $is_ok$(tput sgr0)";
 done
