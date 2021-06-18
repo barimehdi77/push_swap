@@ -22,7 +22,11 @@ do
 		echo "$(tput setaf 1)ERROR: The Numbers |$rand| are unstored $(tput sgr0)";
 		exit;
 	fi
-
+	if [[ $is_ok == *"Error"* ]]
+	then
+		echo "$(tput setaf 1)ERROR: happend withe the following numbers |$rand| $(tput sgr0)";
+		exit;
+	fi
 	if [ $num -ge $max_steps ]
 	then
 		echo "$(tput setaf 1)ERROR: |$rand| sorted in '$num' instead of '$max_steps' $(tput sgr0)";
