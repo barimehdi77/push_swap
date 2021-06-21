@@ -6,7 +6,7 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 16:37:10 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/21 09:46:03 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/21 18:07:47 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_sort_three_numbers(t_vector *stack_a)
 {
-	int *tmp;
+	int	*tmp;
 
 	tmp = stack_a->vector;
 	if (ft_issorted(stack_a))

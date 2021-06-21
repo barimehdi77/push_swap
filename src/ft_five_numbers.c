@@ -6,16 +6,16 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 17:07:09 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/21 09:45:53 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/21 17:46:37 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-int		ft_get_smallest_index(t_vector *stack_a)
+int	ft_get_smallest_index(t_vector *stack_a)
 {
-	int i;
-	int s_index;
+	int	i;
+	int	s_index;
 
 	i = 0;
 	s_index = i;
@@ -30,7 +30,7 @@ int		ft_get_smallest_index(t_vector *stack_a)
 
 void	ft_find_smallest_number(t_stacks *stacks)
 {
-	int s_index;
+	int	s_index;
 
 	s_index = ft_get_smallest_index(&stacks->stack_a);
 	while (s_index != 0)
@@ -45,7 +45,7 @@ void	ft_find_smallest_number(t_stacks *stacks)
 
 void	ft_sort_five_numbers(t_stacks *stacks)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!ft_issorted(&stacks->stack_a))
