@@ -1,14 +1,14 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_five_handred.c                                  :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/18 14:11:07 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/21 09:45:41 by mbari            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    ft_five_handred                                    :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mbari <mbari@student.42.fr>                +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/06/18 14:11:07 by mbari             #+#    #+#              #
+#    Updated: 2021/06/21 19:28:08 by mbari            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 #include "../header/push_swap.h"
 
@@ -188,4 +188,43 @@ void	ft_five_handred(t_stacks *stacks)
 		ft_find_biggest_number(stacks);
 		ft_push_a(stacks);
 	}
+}
+
+
+void	ft_print_stack_a(t_stacks *stacks)
+{
+	int i;
+
+	i = 0;
+	ft_putstr_fd(CYAN, 1);
+	printf("/*****************************stack_a****************************/\n");
+	while (i < stacks->stack_a.used_size)
+	{
+		printf("|size of stack_a= %d|used size = %d|value = %d|\n",stacks->stack_a.size, stacks->stack_a.used_size, stacks->stack_a.vector[i]);
+		i++;
+	}
+	ft_putstr_fd(RESET, 1);
+}
+
+void	ft_print_stack_b(t_stacks *stacks)
+{
+	int i;
+	
+	i = 0;
+	ft_putstr_fd(RED, 1);
+	printf("/*****************************stack_b****************************/\n");
+	while (i < stacks->stack_b.used_size)
+	{
+		printf("|size of stack_b = %d|used size = %d|value = %d|\n",stacks->stack_b.size, stacks->stack_b.used_size, stacks->stack_b.vector[i]);
+		i++;
+	}
+	ft_putstr_fd(RESET, 1);
+}
+
+void	ft_print(t_stacks *stacks)
+{
+	int i;
+
+	ft_print_stack_a(stacks);
+	ft_print_stack_b(stacks);
 }

@@ -6,7 +6,7 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 18:13:01 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/21 18:14:19 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/21 20:30:31 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	ft_sort_rest(t_stacks *stacks)
 	if (stacks->stack_a.used_size == 5 || stacks->stack_a.used_size == 4)
 		ft_sort_five_numbers(stacks);
 	if (stacks->stack_a.used_size > 5)
-		ft_sort_ten_numbers2(stacks, stacks->stack_a.used_size);
+		ft_sort_rest_of_numbers(stacks, stacks->stack_a.used_size);
 }
 
 void 	ft_sort_more_then_handred(t_stacks *stacks)
@@ -89,7 +89,7 @@ void 	ft_sort_more_then_handred(t_stacks *stacks)
 	else if (stacks->stack_a.used_size == 5 || stacks->stack_a.used_size == 4)
 		ft_sort_five_numbers(stacks);
 	else if (stacks->stack_a.used_size > 5 && stacks->stack_a.used_size <= 10)
-		ft_sort_ten_numbers2(stacks, stacks->stack_a.used_size);
+		ft_sort_rest_of_numbers(stacks, stacks->stack_a.used_size);
 	else if (stacks->stack_a.used_size > 10)
 		ft_one_handred(stacks);
 }

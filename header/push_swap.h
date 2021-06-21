@@ -6,13 +6,15 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:54:59 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/21 18:31:38 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/21 20:26:33 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+#include <stdio.h>
+#include <unistd.h>
 # include "../libft/libft.h"
 # define GREEN "\e[1;32m"
 # define RESET "\e[0m"
@@ -63,8 +65,17 @@ int		*ft_list_init(t_vector *stack_a);
 int		*ft_sort_array(t_vector *stack_a);
 void	ft_sort_rest(t_stacks *stacks);
 void	ft_sort_more_then_handred(t_stacks *stacks);
-void	ft_find_smallest_number2(t_stacks *stacks);
+void	ft_find_smallest_number_ten(t_stacks *stacks);
 void	ft_sort_ten_numbers(t_stacks *stacks);
 void	ft_sort_three_numbers(t_vector *stack_a);
+int	ft_isnumber(char *number);
+int	ft_isduplicate(t_stacks *stacks, int number);
+int	ft_issorted(t_vector *vector);
+int	ft_count_numbers(char *string);
+int	ft_put_err(t_stacks *stacks, char *message, int ret);
+char	**ft_stacks_init(char *string, t_stacks *stacks);
+t_stacks	ft_store_numbers(char *string);
+int	ft_av_size(char **av);
+char	*ft_av_to_string(char **av);
 
 #endif

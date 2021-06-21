@@ -6,13 +6,13 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 12:57:59 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/21 18:07:20 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/21 20:26:52 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-void	ft_find_smallest_number2(t_stacks *stacks)
+void	ft_find_smallest_number_ten(t_stacks *stacks)
 {
 	int	s_index;
 
@@ -33,7 +33,7 @@ void	ft_sort_ten_numbers(t_stacks *stacks)
 	{
 		while (stacks->stack_a.used_size != 5)
 		{
-			ft_find_smallest_number2(stacks);
+			ft_find_smallest_number_ten(stacks);
 			ft_push_b(stacks);
 		}
 		ft_sort_five_numbers(stacks);

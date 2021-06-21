@@ -6,13 +6,13 @@
 #    By: mbari <mbari@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/11 15:34:01 by mbari             #+#    #+#              #
-#    Updated: 2021/06/21 13:15:51 by mbari            ###   ########.fr        #
+#    Updated: 2021/06/21 20:21:56 by mbari            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= push_swap
 
-SRC_EXECUTE= main.c src/ft_inctructions.c src/ft_three_numbers.c src/ft_five_numbers.c src/ft_ten_numbers.c src/ft_one_handred.c
+SRC_EXECUTE= src/*.c
 
 LIBFT= libft/libft.a
 
