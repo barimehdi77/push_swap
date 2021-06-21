@@ -6,7 +6,7 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 20:17:07 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/21 20:21:04 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/21 21:23:35 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,19 @@ int	ft_isnumber(char *number)
 int	ft_isduplicate(t_stacks *stacks, int number)
 {
 	int	size;
+	int	i;
 
+	i = 0;
 	size = stacks->stack_a.used_size;
-	while (size >= 0)
+	if (size == 0)
+		return (1);
+	while (i < size)
 	{
-		if (stacks->stack_a.vector[size] == number)
+		if (stacks->stack_a.vector[i] == number)
+		{
 			return (0);
-		size--;
+		}
+		i++;
 	}
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:55:13 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/21 20:34:26 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/21 21:24:02 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,21 @@ char	**ft_stacks_init(char *string, t_stacks *stacks)
 
 t_stacks	ft_store_numbers(char *string)
 {
-	t_stacks	stacks;
-	char		**numbers;
-	int			number;
-	int			size;
-	int			i;
+	t_stacks			stacks;
+	char				**numbers;
+	long long			number;
+	int					size;
+	int					i;
 
 	i = 0;
 	numbers = ft_stacks_init(string, &stacks);
 	while (numbers[i])
 	{
 		if (!ft_isnumber(numbers[i]))
-			exit(ft_put_err(&stacks, "Error 1", 0));
+			exit(ft_put_err(&stacks, "Error", 0));
 		number = ft_atoi(numbers[i]);
+		if (number < -2147483648 || number > 2147483647)
+			exit(ft_put_err(&stacks, "Error", 0));
 		if (!ft_isduplicate(&stacks, number))
 			exit(ft_put_err(&stacks, "Error", 0));
 		stacks.stack_a.vector[i] = number;
