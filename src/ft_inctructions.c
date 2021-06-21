@@ -6,7 +6,7 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 18:15:31 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/21 09:45:55 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/21 13:25:00 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ void	ft_rotate_b(t_vector *stack_b, int print)
 	int	first_element;
 
 	if (print == YES)
-		ft_putendl_fd("ra", 1);
+		ft_putendl_fd("rb", 1);
 	first_element = stack_b->vector[0];
 	ft_pop_stack(stack_b->vector, stack_b->used_size);
 	stack_b->vector[stack_b->used_size - 1] = first_element;

@@ -15,8 +15,8 @@ make;
 while [ 1 ]
 do 
 	rand=`ruby -e "puts (-1000..10000).to_a.shuffle.sample($1).join(' ')"`;
-	num=$(./a.out $rand | grep -E "^(sa|pa|ra|sb|pb|rb|rra|rrb)" | wc -l);
-	is_ok=$(./a.out $rand | grep -E "OK\b|KO\b");
+	num=$(./push_swap $rand | grep -E "^(sa|pa|ra|sb|pb|rb|rra|rrb)" | wc -l);
+	is_ok=$(./push_swap $rand | grep -E "OK\b|KO\b");
 	if [[ $is_ok == *"KO"* ]]
 	then
 		echo "$(tput setaf 1)ERROR: The Numbers |$rand| are unstored $(tput sgr0)";

@@ -6,7 +6,7 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 14:14:10 by kali              #+#    #+#             */
-/*   Updated: 2021/06/21 13:09:55 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/21 17:37:09 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,13 +164,13 @@ void	ft_one_handred(t_stacks *stacks)
 
 	i = 1;
 	sorted_list = ft_sort_array(&stacks->stack_a);
-	ft_print(&stacks);
 	while (i != 4)
 	{
 		key_number = ft_find_key_number(sorted_list, stacks->stack_a.size, i, 4);
 		ft_push_index(stacks, key_number);
 		i++;
 	}
+	free (sorted_list);
 	if (stacks->stack_a.used_size == 2)
 	{
 		if (!ft_issorted(&stacks->stack_a))
@@ -186,6 +186,7 @@ void	ft_one_handred(t_stacks *stacks)
 	{
 		ft_find_biggest_number(stacks);
 		ft_push_a(stacks);
+		// ft_print(stacks);
 	}
 }
 
@@ -203,6 +204,7 @@ void	ft_five_handred(t_stacks *stacks)
 		ft_push_index(stacks, key_number);
 		i++;
 	}
+	free (sorted_list);
 	// ft_print_stack_a(stacks);
 	if (stacks->stack_a.used_size == 2)
 	{
