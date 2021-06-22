@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_checker.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 09:35:44 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/21 11:00:41 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/22 07:53:02 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,35 +29,46 @@ int	ft_isnumber(char *number)
 	return (1);
 }
 
-int	ft_put_err(t_stacks *stacks, char *message, int ret)
+int	ft_isduplicate(t_stacks *stacks, int number)
 {
-	if (stacks->stack_a.vector)
-		free(stacks->stack_a.vector);
-	if (stacks->stack_b.vector)
-		free(stacks->stack_b.vector);
-	if (message != NULL)
-		ft_putendl_fd(message, 2);
-	return (ret);
-}
+	int	size;
+	int	i;
 
-int ft_isduplicate(t_stacks *stacks, int number)
-{
-	int size;
-
+	i = 0;
 	size = stacks->stack_a.used_size;
-	while (size >= 0)
+	if (size == 0)
+		return (1);
+	while (i < size)
 	{
-		if (stacks->stack_a.vector[size] == number)
+		if (stacks->stack_a.vector[i] == number)
+		{
 			return (0);
-		size--;
+		}
+		i++;
 	}
 	return (1);
 }
 
-int	ft_count_numbers(char	*string)
+int	ft_issorted(t_vector *vector)
 {
-	int i;
-	int count;
+	int	i;
+	int	*tmp;
+
+	i = 0;
+	tmp = vector->vector;
+	while (i < vector->used_size - 1)
+	{
+		if (tmp[i] > tmp[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	ft_count_numbers(char *string)
+{
+	int	i;
+	int	count;
 
 	i = 0;
 	count = 0;
@@ -70,47 +81,68 @@ int	ft_count_numbers(char	*string)
 	return (count);
 }
 
+int	ft_put_err(t_stacks *stacks, char *message, int ret)
+{
+	if (stacks->stack_a.vector)
+		free(stacks->stack_a.vector);
+	if (stacks->stack_b.vector)
+		free(stacks->stack_b.vector);
+	if (message != NULL)
+		ft_putendl_fd(message, 2);
+	return (ret);
+}
+
+char	**ft_stacks_init(char *string, t_stacks *stacks)
+{
+	int		size;
+	char	**numbers;
+
+	numbers = ft_split(string, ' ');
+	size = ft_count_numbers(string);
+	stacks->stack_a.vector = (int *)malloc(sizeof(int) * size);
+	stacks->stack_b.vector = (int *)malloc(sizeof(int) * size);
+	stacks->stack_a.size = size;
+	stacks->stack_b.size = size;
+	stacks->stack_a.used_size = 0;
+	stacks->stack_b.used_size = 0;
+	free (string);
+	return (numbers);
+}
+
 t_stacks	ft_store_numbers(char *string)
 {
-	t_stacks	stacks;
-	char		**numbers;
-	int			number;
-	int			size;
-	int			i;
+	t_stacks			stacks;
+	char				**numbers;
+	long long			number;
+	int					size;
+	int					i;
 
 	i = 0;
-	size = ft_count_numbers(string);
-	
-	stacks.stack_a.vector = (int *)malloc(sizeof(int) * size);
-	stacks.stack_b.vector = (int *)malloc(sizeof(int) * size);
-	stacks.stack_a.size = size;
-	stacks.stack_b.size = size;
-	stacks.stack_a.used_size = 0;
-	stacks.stack_b.used_size = 0;
-	numbers = ft_split(string, ' ');
-	// free(string);
+	numbers = ft_stacks_init(string, &stacks);
 	while (numbers[i])
 	{
-		// if (!ft_isnumber(numbers[i]))
-		// 	exit(ft_put_err(&stacks, "Error 1", 0));
+		if (!ft_isnumber(numbers[i]))
+			exit(ft_put_err(&stacks, "Error", 0));
 		number = ft_atoi(numbers[i]);
-		// if (!ft_isduplicate(&stacks, number))
-		// 	exit(ft_put_err(&stacks, "Error", 0));
+		if (number < -2147483648 || number > 2147483647)
+			exit(ft_put_err(&stacks, "Error", 0));
+		if (!ft_isduplicate(&stacks, number))
+			exit(ft_put_err(&stacks, "Error", 0));
 		stacks.stack_a.vector[i] = number;
 		stacks.stack_a.used_size++;
-		// free(numbers[i]);
+		free(numbers[i]);
 		i++;
 	}
-	// free(numbers);
+	free(numbers);
 	return (stacks);
 }
 
-int		ft_av_size(char **av)
+int	ft_av_size(char **av)
 {
-	int size;
-	int i;
-	
-	i = 1;
+	int	size;
+	int	i;
+
+	i = 0;
 	size = 0;
 	while (av[i])
 		size += ft_strlen(av[i++]) + 1;
@@ -120,19 +152,21 @@ int		ft_av_size(char **av)
 char	*ft_av_to_string(char **av)
 {
 	char	*string;
+	char	*tmp;
 	int		size;
-	int 	i;
+	int		i;
 	int		j;
-	
+
 	i = 1;
 	size = ft_av_size(av);
-	string = (char *)malloc(sizeof(char) * (size + 1));
+	string = NULL;
 	while (av[i])
 	{
-		string = ft_strjoin(string, av[i]);
-		string = ft_strjoin(string, " ");
+		tmp = ft_strjoin(string, av[i]);
+		string = ft_strjoin(tmp, " ");
+		free (tmp);
 		i++;
-	}
+	}	
 	return (string);
 }
 
@@ -174,22 +208,6 @@ void	ft_print(t_stacks *stacks)
 	ft_print_stack_b(stacks);
 }
 
-int	ft_issorted(t_vector *vector)
-{
-	int i;
-	int *tmp;
-
-	i = 0;
-	tmp = vector->vector;
-	while (i < vector->used_size - 1)
-	{
-		if (tmp[i] > tmp[i + 1])
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
 void	ft_select_instruction(char *line, t_stacks *stacks)
 {
 	if (!ft_strcmp(line, "sa"))
@@ -214,6 +232,8 @@ void	ft_select_instruction(char *line, t_stacks *stacks)
 		ft_push_a(stacks);
 	else if (!ft_strcmp(line, "pb"))
 		ft_push_b(stacks);
+	else
+		exit(ft_put_err(stacks, "Error", 0));
 }
 
 int main(int ac, char **av)
