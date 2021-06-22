@@ -6,7 +6,7 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:55:13 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/22 17:08:20 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/22 18:25:31 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,14 @@ char	*ft_av_to_string(char **av)
 
 	i = 1;
 	size = ft_av_size(av);
-	string = NULL;
+	string = (char *)malloc(1);
 	while (av[i])
 	{
 		tmp = ft_strjoin(string, av[i]);
+		free(string);
 		string = ft_strjoin(tmp, " ");
 		free (tmp);
 		i++;
-	}	
+	}
 	return (string);
 }

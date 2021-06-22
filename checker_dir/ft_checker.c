@@ -6,12 +6,11 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 09:35:44 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/22 17:19:38 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/22 17:59:54 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/push_swap.h"
-#include "../get_next_line/get_next_line.h"
+#include "../header/checker.h"
 
 // int	ft_isnumber(char *number)
 // {
