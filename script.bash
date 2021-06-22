@@ -16,20 +16,14 @@ while [ 1 ]
 do 
 	rand=`ruby -e "puts (-1000..10000).to_a.shuffle.sample($1).join(' ')"`;
 	num=$(./push_swap $rand | grep -E "^(sa|pa|ra|sb|pb|rb|rra|rrb)" | wc -l);
-	is_ok=$(./push_swap $rand | grep -E "OK\b|KO\b");
+	is_ok=$(./push_swap $rand | checkers/checker_Mac $rand);
 	if [[ $is_ok == *"KO"* ]]
 	then
 		echo "$(tput setaf 1)ERROR: The Numbers |$rand| are unstored $(tput sgr0)";
 		exit;
-	fi
-	if [ $num == 0 ]
+	elif [[ $is_ok == *"Error"* ]]
 	then
-		echo "$(tput setaf 1)ERROR: The Numbers |$rand| are unstored $(tput sgr0)";
-		exit;
-	fi
-	if [[ $is_ok == *"Error"* ]]
-	then
-		echo "$(tput setaf 1)ERROR: happend withe the following numbers |$rand| $(tput sgr0)";
+		echo "$(tput setaf 1)ERROR happend while storing following numbers |$rand| $(tput sgr0)";
 		exit;
 	fi
 	if [ $num -ge $max_steps ]
