@@ -6,7 +6,7 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:55:13 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/21 21:24:02 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/22 16:10:38 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ t_stacks	ft_store_numbers(char *string)
 	t_stacks			stacks;
 	char				**numbers;
 	long long			number;
-	int					size;
 	int					i;
 
 	i = 0;
@@ -75,7 +74,6 @@ char	*ft_av_to_string(char **av)
 	char	*tmp;
 	int		size;
 	int		i;
-	int		j;
 
 	i = 1;
 	size = ft_av_size(av);
@@ -94,8 +92,6 @@ int	main(int ac, char **av)
 {
 	t_stacks	stacks;
 	char		*string;
-	int			*arr;
-	int			i;
 
 	ac--;
 	if (ac == 0)

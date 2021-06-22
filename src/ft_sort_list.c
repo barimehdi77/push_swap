@@ -6,7 +6,7 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 18:13:01 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/21 20:30:31 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/22 16:10:49 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int	*ft_sort_array(t_vector *stack_a)
 {
 	int	i;
 	int	j;
-	int	temp;
 	int	min_index;
 	int	*sorted_list;
 
