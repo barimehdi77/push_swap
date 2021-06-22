@@ -6,7 +6,7 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 14:14:10 by kali              #+#    #+#             */
-/*   Updated: 2021/06/21 18:16:07 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/22 21:13:55 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	ft_push_index(t_stacks *stacks, int key_number)
 	while (index != -1)
 	{
 		ft_move_to_top(stacks, index);
-		ft_push_b(stacks);
+		ft_push_b(stacks, YES);
 		index = ft_search_index(stacks, key_number);
 	}
 }
@@ -81,7 +81,7 @@ void	ft_one_handred(t_stacks *stacks)
 	while (stacks->stack_b.used_size != 0)
 	{
 		ft_find_biggest_number(stacks);
-		ft_push_a(stacks);
+		ft_push_a(stacks, YES);
 	}
 }
 
@@ -105,6 +105,6 @@ void	ft_five_handred(t_stacks *stacks)
 	while (stacks->stack_b.used_size != 0)
 	{
 		ft_find_biggest_number(stacks);
-		ft_push_a(stacks);
+		ft_push_a(stacks, YES);
 	}
 }

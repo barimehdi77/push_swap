@@ -6,7 +6,7 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 18:15:31 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/21 18:17:35 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/22 21:12:52 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_pop_stack(int *vector, int used_size)
 	}
 }
 
-void	ft_push_a(t_stacks *stacks)
+void	ft_push_a(t_stacks *stacks, int print)
 {
 	int	used_size_b;
 	int	used_size_a;
@@ -42,7 +42,8 @@ void	ft_push_a(t_stacks *stacks)
 	i = 0;
 	used_size_b = stacks->stack_b.used_size;
 	used_size_a = stacks->stack_a.used_size;
-	ft_putendl_fd("pa", 1);
+	if (print == YES)
+		ft_putendl_fd("pa", 1);
 	if (used_size_b == 0)
 		return ;
 	if (used_size_a == 0)
@@ -57,7 +58,7 @@ void	ft_push_a(t_stacks *stacks)
 	stacks->stack_b.used_size--;
 }
 
-void	ft_push_b(t_stacks *stacks)
+void	ft_push_b(t_stacks *stacks, int print)
 {
 	int	used_size_b;
 	int	used_size_a;
@@ -66,7 +67,8 @@ void	ft_push_b(t_stacks *stacks)
 	i = 0;
 	used_size_b = stacks->stack_b.used_size;
 	used_size_a = stacks->stack_a.used_size;
-	ft_putendl_fd("pb", 1);
+	if (print == YES)
+		ft_putendl_fd("pb", 1);
 	if (used_size_a == 0)
 		return ;
 	if (used_size_b == 0)

@@ -6,13 +6,13 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 23:34:15 by mbari             #+#    #+#             */
-/*   Updated: 2020/01/24 19:54:54 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/22 20:19:19 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int				get_line(char **str, int n, char **line, int fd)
+int	get_line(char **str, int n, char **line, int fd)
 {
 	char	*temp;
 	int		i;
@@ -41,30 +41,45 @@ int				get_line(char **str, int n, char **line, int fd)
 	return (-1);
 }
 
-int				get_next_line(int fd, char **line)
+int	ft_test(int fd, char *str[4864], char *buf)
+{
+	char	*temp;
+	int		n;
+
+	n = read(fd, buf, BUFFER_SIZE);
+	while (n)
+	{
+		temp = str[fd];
+		buf[n] = '\0';
+		str[fd] = ft_strjoin(str[fd], buf);
+		if (!str[fd])
+			return (-1);
+		free(temp);
+		if (ft_strchr(str[fd], '\n') != NULL)
+			break ;
+	}
+	return (1);
+}
+
+int	get_next_line(int fd, char **line)
 {
 	char			*buf;
 	static char		*str[4864];
 	char			*temp;
 	int				n;
 
-	buf = NULL;
+	buf = malloc(BUFFER_SIZE + 1);
 	if (!line || fd < 0 || fd >= 4864 || BUFFER_SIZE <= 0
-			|| !(buf = malloc(BUFFER_SIZE + 1)) || read(fd, buf, 0) == -1)
+		|| !buf || read(fd, buf, 0) == -1)
 		return (-1);
 	if (!str[fd])
-		if (!(str[fd] = ft_strdup("")))
-			return (-1);
-	while ((n = read(fd, buf, BUFFER_SIZE)))
 	{
-		temp = str[fd];
-		buf[n] = '\0';
-		if (!(str[fd] = ft_strjoin(str[fd], buf)))
+		str[fd] = ft_strdup("");
+		if (!str[fd])
 			return (-1);
-		free(temp);
-		if (ft_strchr(str[fd], '\n') != NULL)
-			break ;
 	}
+	if (ft_test(fd, str, buf) == -1)
+		return (-1);
 	free(buf);
 	return (get_line(str, n, line, fd));
 }

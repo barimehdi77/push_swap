@@ -6,7 +6,7 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:54:59 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/22 13:25:55 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/22 21:13:10 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,16 @@ void		ft_one_handred(t_stacks *stacks);
 void		ft_five_handred(t_stacks *stacks);
 void		ft_push_stack(int *vector, int used_size);
 void		ft_pop_stack(int *vector, int used_size);
-void		ft_push_a(t_stacks *stacks);
-void		ft_push_b(t_stacks *stacks);
+void		ft_push_a(t_stacks *stacks, int print);
+void		ft_push_b(t_stacks *stacks, int print);
 void		ft_reverse_rotate_a(t_vector *stack_a, int print);
 void		ft_reverse_rotate_b(t_vector *stack_b, int print);
-void		ft_reverse_rotate_both(t_stacks *stacks);
+void		ft_reverse_rotate_both(t_stacks *stacks, int print);
 void		ft_swap_a_or_b(t_vector *vector, int print, char stack);
-void		ft_swap_both(t_stacks *stacks);
+void		ft_swap_both(t_stacks *stacks, int print);
 void		ft_rotate_a(t_vector *stack_a, int print);
 void		ft_rotate_b(t_vector *stack_b, int print);
-void		ft_rotate_both(t_stacks *stacks);
+void		ft_rotate_both(t_stacks *stacks, int print);
 void		ft_swap(int *xp, int *yp);
 int			*ft_list_init(t_vector *stack_a);
 int			*ft_sort_array(t_vector *stack_a);

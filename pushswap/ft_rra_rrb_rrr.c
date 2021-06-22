@@ -6,7 +6,7 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 18:11:59 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/21 18:17:24 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/22 21:09:32 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,10 @@ void	ft_reverse_rotate_b(t_vector *stack_b, int print)
 	stack_b->vector[0] = last_element;
 }
 
-void	ft_reverse_rotate_both(t_stacks *stacks)
+void	ft_reverse_rotate_both(t_stacks *stacks, int print)
 {
-	ft_putendl_fd("rrr", 1);
+	if (print == YES)
+		ft_putendl_fd("rrr", 1);
 	ft_reverse_rotate_a(&stacks->stack_a, NO);
 	ft_reverse_rotate_b(&stacks->stack_b, NO);
 }

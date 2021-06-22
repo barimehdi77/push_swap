@@ -6,7 +6,7 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 18:14:55 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/21 20:27:13 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/22 21:13:25 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	ft_sort_rest_of_numbers(t_stacks *stacks, int size)
 		while (stacks->stack_a.used_size >= 5)
 		{
 			ft_find_smallest_number_ten(stacks);
-			ft_push_b(stacks);
+			ft_push_b(stacks, YES);
 		}
 		ft_sort_five_numbers(stacks);
 		while (stacks->stack_a.used_size != size)
-			ft_push_a(stacks);
+			ft_push_a(stacks, YES);
 	}
 }
 

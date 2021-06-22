@@ -6,7 +6,7 @@
 #    By: mbari <mbari@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/11 15:34:01 by mbari             #+#    #+#              #
-#    Updated: 2021/06/22 20:00:19 by mbari            ###   ########.fr        #
+#    Updated: 2021/06/22 20:11:46 by mbari            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,8 +58,7 @@ CHECKER_FILES = ft_checker.c
 MAIN_FILE = main.c
 
 # get_next_line files varible
-GNL_FILES = get_next_line/get_next_line_utils.c \
-get_next_line/get_next_line.c
+GNL_FILES = get_next_line/get_next_line.c
 
 # Define objects for all sources
 PS_OBJS := $(addprefix $(OBJECTSDIR)/, $(PS_FILES:.c=.o))
