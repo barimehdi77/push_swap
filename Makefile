@@ -6,7 +6,7 @@
 #    By: mbari <mbari@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/11 15:34:01 by mbari             #+#    #+#              #
-#    Updated: 2021/06/22 20:11:46 by mbari            ###   ########.fr        #
+#    Updated: 2021/06/23 10:10:58 by mbari            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,16 +16,17 @@ CHECKER = checker
 
 
 # Project's directories
-HEADERDIR := header
-OBJECTSDIR := objects
-OBJECTSCHECKERDIR := objects
-PS_FOLDER = pushswap
-CHECKER_FOLDER = checker_dir
-LIBFT_FOLDER = libft
+PROJECTDIR = srcs
+HEADERSDIR = $(PROJECTDIR)/header
+OBJECTSDIR = objects
+OBJECTSCHECKERDIR = objects
+PS_FOLDER = $(PROJECTDIR)/pushswap
+CHECKER_FOLDER = $(PROJECTDIR)/checker_dir
+LIBFT_FOLDER = $(PROJECTDIR)/libft
 LIBFT_HEADER = $(LIBFT_FOLDER)/libft.h
-PS_HEADER = $(HEADERDIR)/push_swap.h
-CHECKER_HEADER = $(HEADERDIR)/checker.h
-GNL_HEADER = get_next_line/get_next_line.h
+PS_HEADER = $(HEADERSDIR)/push_swap.h
+CHECKER_HEADER = $(HEADERSDIR)/checker.h
+GNL_HEADER = $(PROJECTDIR)/get_next_line/get_next_line.h
 
 
 # Name of variables
@@ -80,7 +81,7 @@ ERRIGNORE = 2>/dev/null
 
 .PHONY: all fclean
 
-all: credit $(CHECKER)
+all: credit $(CHECKER) $(PUSH_SWAP)
 	@echo "$(BLUE)██████████████████████ Compiling is DONE ███████████████████████$(RESET)"
 	@echo "         Made with love by : \033[1;91mmbari\033[m"
 	
@@ -102,7 +103,7 @@ $(OBJECTSDIR)/%.o: $(PS_FOLDER)/%.c $(PS_HEADER)
 print_line:
 	@echo "$(BLUE)████████████████████████ Making checker ████████████████████████$(RESET)"
 
-$(CHECKER): ft_libft $(PUSH_SWAP) print_line $(CHECKER_OBJS) $(CHECKER_MAIN_OBJ)
+$(CHECKER): ft_libft $(PS_OBJS) print_line $(CHECKER_OBJS) $(CHECKER_MAIN_OBJ)
 	@$(CC) -I $(PS_HEADER) -I $(CHECKER_HEADER) -I $(LIBFT_HEADER) -I $(GNL_HEADER) $(CHECKER_OBJS) \
 		$(PS_OBJS) $(CHECKER_MAIN_OBJ) $(GNL_FILES) $(LIBFT_FOLDER)/$(LIBFT_LIB) -o $@
 
