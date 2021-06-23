@@ -11,7 +11,6 @@ then
 else
 	max_steps=$2;
 fi
-make;
 while [ 1 ]
 do 
 	rand=`ruby -e "puts (-1000..10000).to_a.shuffle.sample($1).join(' ')"`;

@@ -6,7 +6,7 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 23:34:23 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/22 20:11:19 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/23 08:28:13 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,5 @@
 # include "../libft/libft.h"
 
 int		get_next_line(int fd, char **line);
+int		ft_read_line(int fd, char *str[4864], char *buf);
 #endif

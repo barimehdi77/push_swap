@@ -6,7 +6,7 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 23:34:15 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/22 20:19:19 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/23 08:27:59 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	get_line(char **str, int n, char **line, int fd)
 	return (-1);
 }
 
-int	ft_test(int fd, char *str[4864], char *buf)
+int	ft_read_line(int fd, char *str[4864], char *buf)
 {
 	char	*temp;
 	int		n;
@@ -78,7 +78,7 @@ int	get_next_line(int fd, char **line)
 		if (!str[fd])
 			return (-1);
 	}
-	if (ft_test(fd, str, buf) == -1)
+	if (ft_read_line(fd, str, buf) == -1)
 		return (-1);
 	free(buf);
 	return (get_line(str, n, line, fd));

@@ -6,7 +6,7 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 09:35:44 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/22 21:15:13 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/23 09:27:17 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void	ft_select_instruction(char *line, t_stacks *stacks)
 	else if (!ft_strcmp(line, "rr"))
 		ft_rotate_both(stacks, NO);
 	else if (!ft_strcmp(line, "pa"))
-		ft_push_a(stacks, YES);
+		ft_push_a(stacks, NO);
 	else if (!ft_strcmp(line, "pb"))
-		ft_push_b(stacks, YES);
+		ft_push_b(stacks, NO);
 	else
 		exit(ft_put_err(stacks, "Error", 0));
 }
