@@ -6,7 +6,7 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 17:19:23 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/25 12:27:54 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/25 14:43:35 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ int	main(int ac, char **av)
 		free(line);
 	}
 	free(line);
-	if (!ft_issorted(&stacks.stack_a))
-		ft_putendl_fd("KO", 1);
-	else
+	if (ft_issorted(&stacks.stack_a) && !stacks.stack_b.used_size)
 		ft_putendl_fd("OK", 1);
+	else
+		ft_putendl_fd("KO", 1);
 	return (ft_put_err(&stacks, NULL, 0));
 }
