@@ -6,11 +6,11 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 20:55:13 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/22 18:25:31 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/25 11:30:42 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/push_swap.h"
+#include "../headers/push_swap.h"
 
 char	**ft_stacks_init(char *string, t_stacks *stacks)
 {

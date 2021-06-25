@@ -6,11 +6,11 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 14:14:10 by kali              #+#    #+#             */
-/*   Updated: 2021/06/22 21:13:55 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/25 11:30:36 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/push_swap.h"
+#include "../headers/push_swap.h"
 
 int	ft_search_index(t_stacks *stacks, int key_number)
 {

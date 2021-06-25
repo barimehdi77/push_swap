@@ -6,11 +6,11 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 18:14:55 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/22 21:13:25 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/25 11:30:30 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/push_swap.h"
+#include "../headers/push_swap.h"
 
 void	ft_sort_rest_of_numbers(t_stacks *stacks, int size)
 {

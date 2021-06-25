@@ -6,11 +6,11 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 17:07:55 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/22 19:45:57 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/25 11:31:00 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/push_swap.h"
+#include "../headers/push_swap.h"
 
 int	main(int ac, char **av)
 {

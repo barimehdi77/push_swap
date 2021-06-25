@@ -6,11 +6,11 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 18:11:59 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/22 21:09:32 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/25 11:30:44 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/push_swap.h"
+#include "../headers/push_swap.h"
 
 void	ft_reverse_rotate_a(t_vector *stack_a, int print)
 {

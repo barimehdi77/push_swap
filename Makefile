@@ -6,7 +6,7 @@
 #    By: mbari <mbari@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/11 15:34:01 by mbari             #+#    #+#              #
-#    Updated: 2021/06/23 10:10:58 by mbari            ###   ########.fr        #
+#    Updated: 2021/06/25 11:51:00 by mbari            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,11 +17,11 @@ CHECKER = checker
 
 # Project's directories
 PROJECTDIR = srcs
-HEADERSDIR = $(PROJECTDIR)/header
+HEADERSDIR = $(PROJECTDIR)/headers
 OBJECTSDIR = objects
 OBJECTSCHECKERDIR = objects
-PS_FOLDER = $(PROJECTDIR)/pushswap
-CHECKER_FOLDER = $(PROJECTDIR)/checker_dir
+PS_FOLDER = push_swap
+CHECKER_FOLDER = checker
 LIBFT_FOLDER = $(PROJECTDIR)/libft
 LIBFT_HEADER = $(LIBFT_FOLDER)/libft.h
 PS_HEADER = $(HEADERSDIR)/push_swap.h
@@ -50,7 +50,7 @@ ft_rra_rrb_rrr.c \
 ft_sa_sb_ss_ra_rb_rr.c \
 ft_sort_list.c \
 ft_ten_numbers.c \
-ft_three_numbers.c 
+ft_three_numbers.c \
 
 # checker files variable
 CHECKER_FILES = ft_checker.c
@@ -59,13 +59,13 @@ CHECKER_FILES = ft_checker.c
 MAIN_FILE = main.c
 
 # get_next_line files varible
-GNL_FILES = get_next_line/get_next_line.c
+GNL_FILES = $(PROJECTDIR)/get_next_line/get_next_line.c
 
 # Define objects for all sources
-PS_OBJS := $(addprefix $(OBJECTSDIR)/, $(PS_FILES:.c=.o))
-CHECKER_OBJS := $(addprefix $(OBJECTSCHECKERDIR)/, $(CHECKER_FILES:.c=.o))
-PS_MAIN_OBJ := $(addprefix $(PS_FOLDER)/, $(MAIN_FILE:.c=.o))
-CHECKER_MAIN_OBJ := $(addprefix $(CHECKER_FOLDER)/, $(MAIN_FILE:.c=.o))
+PS_OBJS := $(addprefix $(OBJECTSDIR)/$(PS_FOLDER)/, $(PS_FILES:.c=.o))
+CHECKER_OBJS := $(addprefix $(OBJECTSCHECKERDIR)/$(CHECKER_FOLDER)/, $(CHECKER_FILES:.c=.o))
+PS_MAIN_OBJ := $(addprefix $(PROJECTDIR)/$(PS_FOLDER)/, $(MAIN_FILE:.c=.o))
+CHECKER_MAIN_OBJ := $(addprefix $(PROJECTDIR)/$(CHECKER_FOLDER)/, $(MAIN_FILE:.c=.o))
 LIBFT_FILE := $(LIBFT_FOLDER)/$(LIBFT_LIB)
 
 # Name the compiler
@@ -92,9 +92,9 @@ ft_libft:
 
 # push_swap making instruction
 $(PUSH_SWAP): ft_libft $(PS_OBJS) $(PS_MAIN_OBJ)
-	@$(CC) -I $(PS_HEADER) -I $(LIBFT_HEADER) $(PS_MAIN_OBJ) $(PS_OBJS) $(LIBFT_FOLDER)/$(LIBFT_LIB) -o $@
+	@$(CC) -I $(PS_HEADER) -I $(LIBFT_HEADER) $(PS_OBJS) $(PS_MAIN_OBJ) $(LIBFT_FOLDER)/$(LIBFT_LIB) -o $@
 
-$(OBJECTSDIR)/%.o: $(PS_FOLDER)/%.c $(PS_HEADER)
+$(OBJECTSDIR)/%.o: $(PROJECTDIR)/%.c $(PS_HEADER)
 	@$(MKDIR) $(dir $@)
 	@echo "$(BLUE)█ $(YELLOW)Compiling$(RESET) $<:\r\t\t\t\t\t\t\t$(GREEN){DONE}$(BLUE) █$(RESET)"
 	@$(CC) $(FLAGS) -I $(PS_HEADER) -I $(LIBFT_HEADER) -o $@ -c $<
@@ -104,10 +104,10 @@ print_line:
 	@echo "$(BLUE)████████████████████████ Making checker ████████████████████████$(RESET)"
 
 $(CHECKER): ft_libft $(PS_OBJS) print_line $(CHECKER_OBJS) $(CHECKER_MAIN_OBJ)
-	@$(CC) -I $(PS_HEADER) -I $(CHECKER_HEADER) -I $(LIBFT_HEADER) -I $(GNL_HEADER) $(CHECKER_OBJS) \
-		$(PS_OBJS) $(CHECKER_MAIN_OBJ) $(GNL_FILES) $(LIBFT_FOLDER)/$(LIBFT_LIB) -o $@
+	@$(CC) -I $(PS_HEADER) -I $(CHECKER_HEADER) -I $(LIBFT_HEADER) -I $(GNL_HEADER) $(CHECKER_MAIN_OBJ) $(CHECKER_OBJS) \
+		$(PS_OBJS) $(GNL_FILES) $(LIBFT_FOLDER)/$(LIBFT_LIB) -o $@
 
-$(OBJECTSCHECKERDIR)/%.o: $(CHECKER_FOLDER)/%.c $(PS_HEADER)
+$(OBJECTSCHECKERDIR)/%.o: $(PROJECTDIR)/%.c $(PS_HEADER)
 	@$(MKDIR) $(dir $@)
 	@echo "$(BLUE)█ $(YELLOW)Compiling$(RESET) $<:\r\t\t\t\t\t\t\t$(GREEN){DONE}$(BLUE) █$(RESET)"
 	@$(CC) $(FLAGS) -I $(PS_HEADER) -I $(LIBFT_HEADER) -o $@ -c $<
@@ -115,13 +115,17 @@ $(OBJECTSCHECKERDIR)/%.o: $(CHECKER_FOLDER)/%.c $(PS_HEADER)
 # making main files
 %.o: %.c
 	@echo "$(BLUE)█ $(YELLOW)Compiling$(RESET) $<:\r\t\t\t\t\t\t\t$(GREEN){DONE}$(BLUE) █$(RESET)"
-	@$(CC) $(FLAGS) -I $(PS_HEADER) -I $(LIBFT_HEADER) -o $@ -c $<
+	@$(CC) $(FLAGS) -I $(PS_HEADER) -I $(CHECKER_HEADER) -I $(LIBFT_HEADER) -o $@ -c $<
 
 # Remove all objects, dependencies and executable files generated during the build
 
 clean:
 	@echo "$(RED)deleting$(RESET): " $(OBJECTSDIR)
 	@$(RMDIR) $(OBJECTSDIR) $(ERRIGNORE)
+	@echo "$(RED)deleting$(RESET): " $(PS_MAIN_OBJ)
+	@$(RMDIR) $(PS_MAIN_OBJ) $(ERRIGNORE)
+	@echo "$(RED)deleting$(RESET): " $(CHECKER_MAIN_OBJ)
+	@$(RMDIR) $(CHECKER_MAIN_OBJ) $(ERRIGNORE)
 	@echo "$(RED)deleting$(RESET): " "libft objects"
 	@$(MAKE) $(LIBFT_FOLDER) clean
 
@@ -130,7 +134,7 @@ fclean: clean
 	@$(RM) $(LIBFT_FOLDER)/$(LIBFT_LIB) $(ERRIGNORE)
 	@echo "$(RED)deleting$(RESET): " $(PUSH_SWAP) 
 	@echo "$(RED)deleting$(RESET): " $(CHECKER)
-	@$(RM) $(PUSH_SWAP) $(CHECKER) $(CHECKER_FOLDER)/main.o $(PS_FOLDER)/main.o $(ERRIGNORE)
+	@$(RM) $(PUSH_SWAP) $(CHECKER) $(ERRIGNORE)
 
 re: fclean all
 

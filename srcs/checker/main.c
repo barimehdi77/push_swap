@@ -6,11 +6,11 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 17:19:23 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/23 08:29:06 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/25 11:41:07 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/checker.h"
+#include "../headers/checker.h"
 
 int	main(int ac, char **av)
 {

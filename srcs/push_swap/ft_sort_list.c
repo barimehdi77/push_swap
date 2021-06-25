@@ -6,11 +6,11 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 18:13:01 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/22 16:10:49 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/25 11:30:50 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/push_swap.h"
+#include "../headers/push_swap.h"
 
 void	ft_swap(int *xp, int *yp)
 {

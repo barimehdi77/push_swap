@@ -6,11 +6,11 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 17:07:09 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/22 21:13:39 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/25 11:30:33 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/push_swap.h"
+#include "../headers/push_swap.h"
 
 int	ft_get_smallest_index(t_vector *stack_a)
 {
