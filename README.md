@@ -7,7 +7,7 @@ This project will make you sort data on a stack, with a limited set of instructi
 The **push_swap** project is a very simple and highly effective algorithm project: data will need to be sorted. You have at your disposal a set of int values, 2 stacks and a set of instructions to manipulate both stacks.
 
 This project contains 2 programs:
-- The first, named **checker** which takes integer arguments and reads instructions on the standard output. Once read,checker executes them and displays `OK` if integersare sorted. Otherwise, it will display `KO`.
+- The first, named **checker**, which takes integer arguments and reads instructions on the standard output. Once read,checker executes them and displays `OK` if integers are sorted. Otherwise, it will display `KO`.
 - The second one called **push_swap** which calculates and displays on the standard output the smallest progam using *push_swap instruction language* that sorts inte-ger arguments received.
 
 ## 🧰 push_swap instructions
@@ -48,7 +48,7 @@ to execute push_swap and checker: `./push_swap 7 6 5 4 3 2 1 | ./checker 7 6 5 4
 
 ## 👨‍💻 Tester
 
-There is a bash script named `script.bash` that generate a shuffle array of size n then test `push_swap | checker` till `the number of instructions >= [number of max instructions]` or any error happend, then the script stop and show you the numbers when the error happend.
+There is a bash script named `script.bash` that generate a random array of size n then test `push_swap | checker` till `the number of instructions >= [number of max instructions]` or any error happened, then the script stops and shows you the numbers when the error happened.
 
 ```
 ./script.bash [how many number] [number of max instructions]
