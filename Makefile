@@ -6,7 +6,7 @@
 #    By: mbari <mbari@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/11 15:34:01 by mbari             #+#    #+#              #
-#    Updated: 2021/06/25 12:11:29 by mbari            ###   ########.fr        #
+#    Updated: 2021/06/25 12:27:03 by mbari            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ GNL_HEADER = $(PROJECTDIR)/get_next_line/get_next_line.h
 
 # Name of variables
 LIBFT_LIB = libft.a
-FLAGS = -Wall -Wextra -Werror
+FLAGS = #-Wall -Wextra -Werror
 RED = \033[1;31m
 GREEN = \033[1;32m
 YELLOW = \033[1;33m
@@ -107,7 +107,7 @@ $(CHECKER): ft_libft $(PS_OBJS) print_line $(CHECKER_OBJS) $(CHECKER_MAIN_OBJ)
 	@$(CC) -I $(PS_HEADER) -I $(CHECKER_HEADER) -I $(LIBFT_HEADER) -I $(GNL_HEADER) $(CHECKER_MAIN_OBJ) $(CHECKER_OBJS) \
 		$(PS_OBJS) $(GNL_FILES) $(LIBFT_FOLDER)/$(LIBFT_LIB) -o $@
 
-$(OBJECTSCHECKERDIR)/%.o: $(PROJECTDIR)/%.c $(PS_HEADER)
+$(OBJECTSCHECKERDIR)/%.o: $(PROJECTDIR)/%.c $(CHECKER_HEADER) $(PS_HEADER)
 	@$(MKDIR) $(dir $@)
 	@echo "$(BLUE)█ $(YELLOW)Compiling$(RESET) $<:\r\t\t\t\t\t\t\t$(GREEN){DONE}$(BLUE) █$(RESET)"
 	@$(CC) $(FLAGS) -I $(PS_HEADER) -I $(LIBFT_HEADER) -o $@ -c $<
