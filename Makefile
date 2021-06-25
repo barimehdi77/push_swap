@@ -6,7 +6,7 @@
 #    By: mbari <mbari@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/11 15:34:01 by mbari             #+#    #+#              #
-#    Updated: 2021/06/25 11:51:00 by mbari            ###   ########.fr        #
+#    Updated: 2021/06/25 12:11:29 by mbari            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,7 +90,7 @@ ft_libft:
 	@$(MAKE) $(LIBFT_FOLDER)
 	@echo "$(BLUE)███████████████████████ Making Push_swap ███████████████████████$(RESET)"
 
-# push_swap making instruction
+# push_swap making rules
 $(PUSH_SWAP): ft_libft $(PS_OBJS) $(PS_MAIN_OBJ)
 	@$(CC) -I $(PS_HEADER) -I $(LIBFT_HEADER) $(PS_OBJS) $(PS_MAIN_OBJ) $(LIBFT_FOLDER)/$(LIBFT_LIB) -o $@
 
@@ -99,7 +99,7 @@ $(OBJECTSDIR)/%.o: $(PROJECTDIR)/%.c $(PS_HEADER)
 	@echo "$(BLUE)█ $(YELLOW)Compiling$(RESET) $<:\r\t\t\t\t\t\t\t$(GREEN){DONE}$(BLUE) █$(RESET)"
 	@$(CC) $(FLAGS) -I $(PS_HEADER) -I $(LIBFT_HEADER) -o $@ -c $<
 
-# checker making instruction
+# checker making rules
 print_line:
 	@echo "$(BLUE)████████████████████████ Making checker ████████████████████████$(RESET)"
 
@@ -112,7 +112,7 @@ $(OBJECTSCHECKERDIR)/%.o: $(PROJECTDIR)/%.c $(PS_HEADER)
 	@echo "$(BLUE)█ $(YELLOW)Compiling$(RESET) $<:\r\t\t\t\t\t\t\t$(GREEN){DONE}$(BLUE) █$(RESET)"
 	@$(CC) $(FLAGS) -I $(PS_HEADER) -I $(LIBFT_HEADER) -o $@ -c $<
 
-# making main files
+# Making main files
 %.o: %.c
 	@echo "$(BLUE)█ $(YELLOW)Compiling$(RESET) $<:\r\t\t\t\t\t\t\t$(GREEN){DONE}$(BLUE) █$(RESET)"
 	@$(CC) $(FLAGS) -I $(PS_HEADER) -I $(CHECKER_HEADER) -I $(LIBFT_HEADER) -o $@ -c $<
@@ -138,6 +138,7 @@ fclean: clean
 
 re: fclean all
 
+# Print Credit
 credit:
 	@echo "░▒█▀▀█░▒█░▒█░▒█▀▀▀█░▒█░▒█░░░▒█▀▀▀█░▒█░░▒█░█▀▀▄░▒█▀▀█"
 	@echo "░▒█▄▄█░▒█░▒█░░▀▀▀▄▄░▒█▀▀█░░░░▀▀▀▄▄░▒█▒█▒█▒█▄▄█░▒█▄▄█"
