@@ -6,7 +6,7 @@
 /*   By: mbari <mbari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 20:17:07 by mbari             #+#    #+#             */
-/*   Updated: 2021/06/25 11:30:28 by mbari            ###   ########.fr       */
+/*   Updated: 2021/06/26 11:53:15 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,13 @@ int	ft_count_numbers(char *string)
 
 int	ft_put_err(t_stacks *stacks, char *message, int ret)
 {
-	if (stacks->stack_a.vector)
-		free(stacks->stack_a.vector);
-	if (stacks->stack_b.vector)
-		free(stacks->stack_b.vector);
+	if (stacks)
+	{
+		if (stacks->stack_a.vector)
+			free(stacks->stack_a.vector);
+		if (stacks->stack_b.vector)
+			free(stacks->stack_b.vector);
+	}
 	if (message != NULL)
 		ft_putendl_fd(message, 2);
 	return (ret);
