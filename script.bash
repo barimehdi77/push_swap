@@ -16,11 +16,7 @@ while [ 1 ]
 do 
 	rand=`ruby -e "puts (-1000..10000).to_a.shuffle.sample($1).join(' ')"`;
 	num=$(./push_swap $rand | grep -E "^(sa|pa|ra|sb|pb|rb|rra|rrb)" | wc -l);
-	if [ $? == 142 ]
-	then
-		echo "$(tput setaf 1)ERROR: Timeout while  sorting the following numbers |$rand| $(tput sgr0)"
-	fi
-	is_ok=$(timeout 3 ./push_swap $rand | ./checker $rand);
+	is_ok=$(./push_swap $rand | ./checker $rand);
 	if [[ $is_ok == *"KO"* ]]
 	then
 		echo "$(tput setaf 1)ERROR: The Numbers |$rand| are unstored $(tput sgr0)";
